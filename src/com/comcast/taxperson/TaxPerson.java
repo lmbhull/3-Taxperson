@@ -1,10 +1,8 @@
 package com.comcast.taxperson;
 
-import java.text.DecimalFormat;
-
 /**
  * 
- * @author lindahull
+ * @author Linda Hull
  * Date: 2016-05-11
  * 
  * Calculate the total cost of an item, including tax, based on whether it is considered a necessary 
@@ -12,13 +10,8 @@ import java.text.DecimalFormat;
  */
 public class TaxPerson {
 
-	public static void main(String[] args) {
-		testBothItemTypes(0.00);
-		
-	}
-
-	private static double necessityRate = 0.01;
-	private static double luxuryRate = 0.09;
+	private static double NECESSITY_RATE = 0.01;
+	private static double LUXURY_RATE = 0.09;
 	
 	/**
 	 * Calculate total cost, given type of item and the cost.
@@ -26,19 +19,11 @@ public class TaxPerson {
 	 * @param cost
 	 * @return double
 	 */
-	public static double calculateTotalCost(boolean isLuxuryItem, double cost) {
-		
-		double taxRate = 1 + necessityRate;
+	public static int calculateTotalCost(boolean isLuxuryItem, int cost) {
+		double taxRate = 1 + NECESSITY_RATE;
 		if (isLuxuryItem) {
-			taxRate = 1 + luxuryRate;
+			taxRate = 1 + LUXURY_RATE;
 		}
-		return (cost * taxRate);
-	}
-	
-	public static void testBothItemTypes(double cost) {
-		DecimalFormat df = new DecimalFormat("#.00");
-		System.out.println("Given cost of $" + df.format(cost));
-		System.out.println("Total cost=$" + df.format(calculateTotalCost(true, cost)));
-		System.out.println("Total cost=$" + df.format(calculateTotalCost(false, cost)));
+		return (int) (cost * taxRate);
 	}
 }
