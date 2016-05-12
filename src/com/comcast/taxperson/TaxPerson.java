@@ -1,5 +1,6 @@
 package com.comcast.taxperson;
 
+
 /**
  * 
  * @author Linda Hull
@@ -10,20 +11,24 @@ package com.comcast.taxperson;
  */
 public class TaxPerson {
 
-	private static double NECESSITY_RATE = 0.01;
-	private static double LUXURY_RATE = 0.09;
+	private static float NECESSITY_RATE = 1;
+	private static float LUXURY_RATE = 9;
 	
 	/**
 	 * Calculate total cost, given type of item and the cost.
 	 * @param isLuxuryItem
 	 * @param cost
-	 * @return double
+	 * @return double 
 	 */
-	public static int calculateTotalCost(boolean isLuxuryItem, int cost) {
-		double taxRate = 1 + NECESSITY_RATE;
-		if (isLuxuryItem) {
-			taxRate = 1 + LUXURY_RATE;
+	public static int calculateTotalCost(boolean isLuxuryItem, int cost) throws Exception{
+		if (cost<=0) {
+			throw new Exception("The cost must be greater than 0");
 		}
-		return (int) (cost * taxRate);
+		float taxRate = NECESSITY_RATE/100;
+		if (isLuxuryItem) {
+			taxRate = LUXURY_RATE/100;
+		}
+		float taxAmount = Math.round(taxRate * cost);
+		return (int) (cost + taxAmount);
 	}
 }
