@@ -11,8 +11,8 @@ package com.comcast.taxperson;
  */
 public class TaxPerson {
 
-	private static float NECESSITY_RATE = 1;
-	private static float LUXURY_RATE = 9;
+	private static double NECESSITY_RATE = 1.00;
+	private static double LUXURY_RATE = 9.00;
 	
 	/**
 	 * Calculate total cost, given type of item and the cost.
@@ -24,11 +24,16 @@ public class TaxPerson {
 		if (cost<=0) {
 			throw new Exception("The cost must be greater than 0");
 		}
-		float taxRate = NECESSITY_RATE/100;
+		
+		// First determine relevant tax rate.
+		double taxRate = NECESSITY_RATE/100;
 		if (isLuxuryItem) {
 			taxRate = LUXURY_RATE/100;
 		}
-		float taxAmount = Math.round(taxRate * cost);
+		
+		// Calculate the tax amount.
+		double taxAmount = Math.round(taxRate * cost);
+
 		return (int) (cost + taxAmount);
 	}
 }

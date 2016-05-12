@@ -3,6 +3,7 @@ package com.comcast.taxperson;
 import static org.junit.Assert.*;
 import org.junit.Test;
 
+
 public class TaxTest {
 	@Test
 	public void testNegativeCostThrowsException() {
@@ -40,8 +41,8 @@ public class TaxTest {
 	
 	@Test
 	public void testLargeAmount() throws Exception{
-		assertEquals(10099999, TaxPerson.calculateTotalCost(false, 9999999));
-		assertEquals(10899999, TaxPerson.calculateTotalCost(true, 9999999));
+		assertEquals(100999999, TaxPerson.calculateTotalCost(false, 99999999));
+		assertEquals(108999999, TaxPerson.calculateTotalCost(true, 99999999));
 	}
 		
 	@Test
